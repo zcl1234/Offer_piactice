@@ -16,4 +16,8 @@ public class BinaryTree {
         LeftNode = leftNode;
         RightNode = rightNode;
     }
+    public String toString()
+    {
+        return new Integer(value).toString();
+    }
 }

@@ -10,8 +10,8 @@ public class PhaserTest2 {
             protected boolean onAdvance(int phase, int registeredParties) {  
                 System.out.println("\n=========华丽的分割线=============");  
                 //本例中，当只剩一个线程时，这个线程必定是主线程，返回true表示终结  
-             //   return registeredParties ==1;   
-               return phase>=3;
+                return registeredParties ==1;
+             //  return phase>=3;
             }             
         };  
         System.out.println("程序开始执行");  
@@ -43,7 +43,7 @@ class MyThread2 extends Thread
 	    }  
 	  
 	    @Override  
-	    public void run() {  
+	    public void run() {
 	        while(!phaser.isTerminated()) {  
 	            for(int i=0; i<10; i++) { //将当前字母打印10次  
 	                System.out.print(c + " ");  

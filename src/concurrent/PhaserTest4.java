@@ -5,7 +5,7 @@ import java.util.concurrent.Phaser;
 public class PhaserTest4 {
 	public static void main(String[] args)
 	{
-		Phaser phaser=new Phaser(1);
+		Phaser phaser=new Phaser(2);
 		new taskA(phaser).start();
 		new taskB(phaser).start();
 		System.out.println(phaser.getRegisteredParties());
@@ -18,7 +18,7 @@ class taskA extends Thread
 	public taskA(Phaser phaser)
 	{
 		this.phaser=phaser;
-		//phaser.register();
+		phaser.register();
 	}
 	
 	public void run()
@@ -33,8 +33,8 @@ class taskA extends Thread
 		}
 		phaser.arriveAndAwaitAdvance();
 		System.out.println("here");
-	//	phaser.awaitAdvance(1);
-		//phaser.arriveAndDeregister();
+		phaser.awaitAdvance(1);
+		phaser.arriveAndDeregister();
 	}
 }
 
@@ -44,7 +44,7 @@ class taskB extends Thread
 	public taskB(Phaser phaser)
 	{
 		this.phaser=phaser;
-		//phaser.register();
+		phaser.register();
 	}
 	
 	public void run()

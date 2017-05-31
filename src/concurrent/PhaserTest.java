@@ -23,7 +23,7 @@ public class PhaserTest {
     } catch (InterruptedException e) {  
         e.printStackTrace();  
     }  
-  //  phaser.arrive();  //此处可使用latch.countDown()  
+    phaser.arrive();  //此处可使用latch.countDown()
 }  
 }
 class MyThread implements Runnable
@@ -39,7 +39,8 @@ class MyThread implements Runnable
 	
 	public void run()
 	{
-		phaser.awaitAdvance(0);
+		phaser.awaitAdvance(phaser.getPhase());
+		//phaser.arriveAndAwaitAdvance();
 		System.out.println(phaser.getPhase());
 		for(int i=0; i<100; i++) {  
             System.out.print(c+" ");  
